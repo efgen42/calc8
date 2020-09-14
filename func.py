@@ -63,7 +63,7 @@ def decimalconv(a):
     # print(res)
     return res
 
-
+def
 
 if __name__ == '__main__':
 

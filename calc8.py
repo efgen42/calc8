@@ -1,7 +1,6 @@
 # -*- coding utf-8 -*-
 from func import sum8, dif8, decimalconv
-from tkinter import *
-from tkinter.ttk import Combobox
+from tkinter import Label, Entry, Tk, Button, END, Radiobutton, IntVar
 
 window = Tk()
 window.title("calc8")
@@ -10,12 +9,13 @@ window.geometry('200x250')
 Label(window, text="Число 1:").pack()
 e1 = Entry(window)
 e1.pack()
+e1.focus()
+
 Label(window, text="Число 2:").pack()
 e2 = Entry(window)
 e2.pack()
-
-
-
+# e2 = Entry(window,state='disabled')
+# e2.pack()
 
 var=IntVar()
 var.set(0)
@@ -33,14 +33,29 @@ e3.pack()
 def clicked():
     a = e1.get()
     b = e2.get()
-    result = a + b
 
-    e3.delete(0,END)
+    if var.get() == 0:
+        result = sum8(a, b)
+    elif var.get() == 1:
+        result = dif8(a, b)
+    elif var.get() == 2:
+        result = decimalconv(a)
+
+    if var.get() == 2:
+        e2.delete(0, END)
+
+    e3.delete(0, END)
     e3.insert(0, result)
-
-    # Label(window, text=result, font=("Arial Bold", 20)).pack()
+    e1.focus()
 
 Button(window, text="Выполнить", command=clicked).pack()
 
-
 window.mainloop()
+
+###
+##  Проверки:
+### 1. Если одино из чисел пусто при сложении\вычитании - рез-т= наличиествующее число
+### 2. Если не цифра или не восьмеричное число - выкидываем ошибку и очищаем поля ввода и рез-та(?)
+###
+
+###
