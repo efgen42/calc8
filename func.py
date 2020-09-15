@@ -1,5 +1,14 @@
 # -*- coding utf-8 -*-
 def sum8(a, b):
+#     if a and not b:
+#         return a
+#     elif not a and b:
+#         return b
+#
+#
+#
+#     if a and b:
+
     des = 0
     sum = []
     intsum = ''
@@ -63,7 +72,7 @@ def decimalconv(a):
     # print(res)
     return res
 
-def
+# def digittest(a, b):
 
 if __name__ == '__main__':
 
