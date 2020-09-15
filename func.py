@@ -1,53 +1,42 @@
 # -*- coding utf-8 -*-
 def sum8(a, b):
-#     if a and not b:
-#         return a
-#     elif not a and b:
-#         return b
-#
-#
-#
-#     if a and b:
-
-    des = 0
-    sum = []
-    intsum = ''
-    if int(a) >= int(b):
+    des = 0 # флаг наличия десятка "в уме"
+    amount = [] # результирующий список в обратном порядке
+    ints = '' # результат
+    if int(a) >= int(b):    # ищем большее число
         l1, l2 = list(a), list(b)
     else:
         l1, l2 = list(b), list(a)
 
-    while l1:
+    while l1:   # эмулируем сложение в столбик
         x, y = int(l1.pop()), int(l2.pop()) if l2 else 0
-        unit = x + y
-        unit = unit + des
+        unit = x + y + des
         # print(unit + des)
-        des = 0
-        if int(unit) >= 8:
+        des = 0 # обнуляем флаг десятка
+        if unit >= 8:
             des = 1
-            unit = int(unit) - 8  #  не нужен int ?
-        sum.append(unit)
-    else:
-        sum.append(des) if des == 1 else sum
+            unit = unit - 8
+        amount.append(unit)
+    else:                                           #  если остался десяток после сложения
+        amount.append(des) if des == 1 else amount  #  всех разрядов, добавим его к результату
 
-    for i in sum[::-1]:
-        intsum += str(i)
-
-    # print(int(intsum))
-    return int(intsum)
+    for i in amount[::-1]:  # восстанавливаем верный порядок разрядов
+        ints += str(i)
+    # print(int(ints))
+    return int(ints)
 
 
 def dif8(a,b):
     des = 0
     dif = []
-    intdif = ''
+    intd = ''
     if int(a) >= int(b):
         l1, l2 = list(a), list(b)
-        znak = 1
+        znak = 1    # положительное число
     else:
         l1, l2 = list(b), list(a)
-        znak = -1
-    while l1:
+        znak = -1   # отрицательное число
+    while l1:   # эмуляруем вычитание в столбик
         x = int(l1.pop()) - des
         y = int(l2.pop()) if l2 else 0
         if x < y:
@@ -59,20 +48,17 @@ def dif8(a,b):
         dif.append(unit)
 
     for i in dif[::-1]:
-        intdif += str(i)
+        intd += str(i)
 
-    # print(int(intdif) * znak)
-    return int(intdif) * znak
+    return int(intd) * znak
 
-def decimalconv(a):
+def decimalconv(a): # перевод в десятичное число
     res = 0
     a = list(enumerate(list(str(a)[::-1])))
     for x,y in a:
         res += (int(y)) * (8 ** x)
     # print(res)
     return res
-
-# def digittest(a, b):
 
 if __name__ == '__main__':
 
