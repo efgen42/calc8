@@ -8,7 +8,7 @@ def sum8(a, b):
     else:
         l1, l2 = list(b), list(a)
 
-    while l1:   # эмулируем сложение в столбик
+    while l1:   # сложение
         x, y = int(l1.pop()), int(l2.pop()) if l2 else 0
         unit = x + y + des
         # print(unit + des)
@@ -26,7 +26,7 @@ def sum8(a, b):
     return int(ints)
 
 
-def dif8(a,b):
+def dif8(a,b):  # вычитание
     des = 0
     dif = []
     intd = ''
@@ -52,6 +52,7 @@ def dif8(a,b):
 
     return int(intd) * znak
 
+
 def decimalconv(a): # перевод в десятичное число
     res = 0
     a = list(enumerate(list(str(a)[::-1])))
@@ -59,6 +60,7 @@ def decimalconv(a): # перевод в десятичное число
         res += (int(y)) * (8 ** x)
     # print(res)
     return res
+
 
 if __name__ == '__main__':
 
